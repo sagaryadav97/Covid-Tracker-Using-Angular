@@ -1,0 +1,162 @@
+			<br>
+			<div fxLayoutAlign="center center">
+				<mat-card style="text-align: center;width: 350px;background-color:#edfcf1;">Total Counts of India</mat-card>
+			</div>
+			<br>
+			<mat-card class="example-card">
+				<div fxLayout="row" fxLayoutGap="32px" fxLayoutAlign="space-around center">
+
+					<mat-card style="text-align: center;background-color:#83FA8B;width: 150px;">
+						<mat-card-title>
+							Confirmed
+						</mat-card-title>
+						<mat-card-content>
+							{{total_covid_1.confirmed}}
+						</mat-card-content>
+					</mat-card>
+					<mat-card style="text-align: center;background-color:#F9D72C;width: 150px;">
+						<mat-card-title>
+							Active
+						</mat-card-title>
+						<mat-card-content>
+							{{total_covid_1.active}}
+						</mat-card-content>
+					</mat-card>
+					<mat-card style="text-align: center;background-color:#83FA8B;width: 150px;">
+						<mat-card-title>
+							Recovered
+						</mat-card-title>
+						<mat-card-content>
+							{{total_covid_1.recovered}}
+						</mat-card-content>
+					</mat-card>
+					<mat-card style="text-align: center;background-color:#FF3333;width: 150px;">
+						<mat-card-title>
+							Deaths
+						</mat-card-title>
+						<mat-card-content>
+							{{total_covid_1.deaths}}
+						</mat-card-content>
+					</mat-card>
+				</div>
+			</mat-card>
+			<br>
+			<div fxLayoutAlign="center center">
+				<mat-card style="text-align: center;width: 350px;background-color:#edfcf1;">Total Counts of India in State Wise</mat-card>
+			</div>
+			<br>
+			<mat-accordion>
+				<div>
+					<mat-card class="example-card">
+						<div *ngFor="let co of covid">
+							<mat-expansion-panel hideToggle>
+								<mat-expansion-panel-header>
+									<mat-panel-title>
+										{{co.state}}
+									</mat-panel-title>
+
+								</mat-expansion-panel-header>
+
+								<div fxLayout="row" fxLayoutGap="32px" fxLayoutAlign="space-around center">
+									<br>
+
+									<mat-card style="text-align: center;background-color:#84F5F5;width: 150px;">
+										<mat-card-title>
+											Confirmed
+										</mat-card-title>
+										<mat-card-content>
+											{{co.confirmed}}
+										</mat-card-content>
+									</mat-card>
+									<mat-card style="text-align: center;background-color:#F9D72C;width: 150px;">
+										<mat-card-title>
+											Active
+										</mat-card-title>
+										<mat-card-content>
+											{{co.active}}
+										</mat-card-content>
+									</mat-card>
+									<mat-card style="text-align: center;background-color:#83FA8B;width: 150px;">
+										<mat-card-title>
+											Recovered
+										</mat-card-title>
+										<mat-card-content>
+											{{co.recovered}}
+										</mat-card-content>
+									</mat-card>
+									<mat-card style="text-align: center;background-color:#FF3333;width: 150px;">
+										<mat-card-title>
+											Deaths
+										</mat-card-title>
+										<mat-card-content>
+											{{co.deaths}}
+										</mat-card-content>
+									</mat-card>
+								</div>
+								<br>
+								<br>
+								<div fxLayoutAlign="center center">
+									<mat-card style="text-align: center;width: 350px;background-color:#edfcf1;">Total Counts in District
+										Wise</mat-card>
+								</div>
+								<br>
+								<div *ngFor="let item of covid_1 | keyvalue">
+									<div *ngIf="co.state == item.key">
+										<div *ngFor="let items of item.value | keyvalue">
+											<div *ngFor="let itemss of items.value | keyvalue">
+												<mat-expansion-panel hideToggle>
+													<mat-expansion-panel-header>
+														<mat-panel-title>
+															{{itemss.key}}
+														</mat-panel-title>
+														<mat-panel-description>
+															Click To View Counts
+														</mat-panel-description>
+													</mat-expansion-panel-header>
+													<div fxLayout="row" fxLayoutGap="32px"
+														fxLayoutAlign="space-around center">
+														<mat-card style="background-color:#F9D72C;width: 150px;">
+															<mat-card-title>
+																Active
+															</mat-card-title>
+															<mat-card-content>
+																{{itemss.value.active}}
+															</mat-card-content>
+														</mat-card>
+														<mat-card style="background-color:#84F5F5;width: 150px;">
+															<mat-card-title>
+																Confirmed
+															</mat-card-title>
+															<mat-card-content>
+																{{itemss.value.confirmed}}
+															</mat-card-content>
+														</mat-card>
+														<mat-card style="background-color:#FF3333;width: 150px;">
+															<mat-card-title>
+																Deaths
+															</mat-card-title>
+															<mat-card-content>
+																{{itemss.value.deceased}}
+															</mat-card-content>
+														</mat-card>
+														<mat-card style="background-color:#83FA8B;width: 150px;">
+															<mat-card-title>
+																Recovered
+															</mat-card-title>
+															<mat-card-content>
+																{{itemss.value.recovered}}
+															</mat-card-content>
+														</mat-card>
+													</div>
+												</mat-expansion-panel>
+												<br>
+										</div>
+											</div>
+										</div>
+									</div>
+							</mat-expansion-panel>
+							<br>
+					</div>
+					</mat-card>
+				</div>
+			</mat-accordion>

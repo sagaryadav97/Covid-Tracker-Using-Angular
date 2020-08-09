@@ -1,0 +1,144 @@
+<div>
+	<mat-toolbar class="testing" color="primary" fullscreen>
+		<div>
+			<button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+			<span>My App</span></div>
+		<div class="navright">
+			<button mat-icon-button>
+        <mat-icon>favorite</mat-icon>
+      </button>
+			<button mat-icon-button>
+      <mat-icon>share</mat-icon>
+      </button>
+		</div>
+	</mat-toolbar>
+
+	<mat-sidenav-container>
+		<mat-sidenav appResponsiveSidenav #sidenav opened mode="side">
+			<mat-nav-list>
+				<a mat-list-item routerLink="/">Home</a>
+				<a mat-list-item routerLink="/">Home</a>
+
+
+			</mat-nav-list>
+
+
+		</mat-sidenav>
+		<mat-sidenav-content>
+
+			<mat-accordion>
+        <div style="background-color:transparent" fxLayoutGap="32px"> 
+				<mat-card class="example-card">
+					<div *ngFor="let co of covid">
+						<mat-expansion-panel hideToggle>
+							<mat-expansion-panel-header>
+								<mat-panel-title>
+									{{co.state}}
+								</mat-panel-title>
+
+							</mat-expansion-panel-header>
+            
+						<div fxLayout="row" fxLayoutGap="32px"  fxLayoutAlign="space-around center" >
+              <br>
+
+								<mat-card style="background-color:#84F5F5;width: 150px;">
+									<mat-card-title>
+										Confirmed
+									</mat-card-title>
+									<mat-card-content>
+										{{co.confirmed}}
+									</mat-card-content>
+								</mat-card>
+								<mat-card style="background-color:#F9D72C;width: 150px;">
+									<mat-card-title>
+										Active
+									</mat-card-title>
+									<mat-card-content>
+										{{co.active}}
+									</mat-card-content>
+								</mat-card>
+								<mat-card style="background-color:#83FA8B;width: 150px;">
+									<mat-card-title>
+										Recovered
+									</mat-card-title>
+									<mat-card-content>
+										{{co.recovered}}
+									</mat-card-content>
+								</mat-card>
+								<mat-card style="background-color:#FF3333;width: 150px;">
+									<mat-card-title>
+										Deaths
+									</mat-card-title>
+									<mat-card-content>
+										{{co.deaths}}
+									</mat-card-content>
+								</mat-card>
+							</div>
+              <br>
+							<p>District Wise Counts</p>
+							<div *ngFor="let item of covid_1 | keyvalue">
+								<div *ngIf="co.state == item.key">
+									<div *ngFor="let items of item.value | keyvalue">
+										<div *ngFor="let itemss of items.value | keyvalue">
+											<mat-expansion-panel hideToggle>
+												<mat-expansion-panel-header>
+													<mat-panel-title>
+														{{itemss.key}}
+													</mat-panel-title>
+													<mat-panel-description>
+														This is a summary of the content
+													</mat-panel-description>
+												</mat-expansion-panel-header>
+												<div fxLayout="row" fxLayoutGap="32px"  fxLayoutAlign="space-around center">
+													<mat-card style="background-color:#F9D72C;width: 150px;">
+														<mat-card-title>
+															Active
+														</mat-card-title>
+														<mat-card-content>
+															{{itemss.value.active}}
+														</mat-card-content>
+													</mat-card>
+													<mat-card style="background-color:#84F5F5;width: 150px;">
+														<mat-card-title>
+															Confirmed
+														</mat-card-title>
+														<mat-card-content>
+															{{itemss.value.confirmed}}
+														</mat-card-content>
+													</mat-card>
+													<mat-card style="background-color:#FF3333;width: 150px;">
+														<mat-card-title>
+															Deaths
+														</mat-card-title>
+														<mat-card-content>
+															{{itemss.value.deceased}}
+														</mat-card-content>
+													</mat-card>
+													<mat-card style="background-color:#83FA8B;width: 150px;">
+														<mat-card-title>
+															Recovered
+														</mat-card-title>
+														<mat-card-content>
+															{{itemss.value.recovered}}
+														</mat-card-content>
+													</mat-card>
+												</div>
+											</mat-expansion-panel>
+										</div>
+									</div>
+								</div>
+							</div>
+						</mat-expansion-panel>
+            <br>
+					</div>
+				</mat-card>
+       </div> 
+			</mat-accordion>
+
+			<button mat-button color="accent" (click)="sidenav.toggle()">
+    menu  </button>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+</div>
